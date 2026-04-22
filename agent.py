@@ -2,6 +2,7 @@ import logging
 
 from strands import Agent
 from strands.models.ollama import OllamaModel
+from utils import speak
 
 # Enables Strands debug log level
 logging.getLogger('strands').setLevel(logging.DEBUG)
@@ -21,4 +22,5 @@ qwen_model = OllamaModel(
 # inicia o agente
 agent = Agent(model=qwen_model, tools=[])
 
-agent('Que dia é hoje e quando será daqui a 5 dias?')
+response = agent('what is your name?')
+speak(str(response))
