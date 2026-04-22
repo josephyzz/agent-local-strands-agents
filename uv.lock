@@ -8,6 +8,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "gtts" },
+    { name = "pydantic-settings" },
     { name = "strands-agents", extra = ["ollama"] },
     { name = "strands-agents-builder" },
     { name = "strands-agents-tools" },
@@ -16,6 +17,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "gtts", specifier = ">=2.3.0" },
+    { name = "pydantic-settings", specifier = ">=2.0.0" },
     { name = "strands-agents", extras = ["ollama"], specifier = ">=1.36.0" },
     { name = "strands-agents-builder", specifier = ">=0.1.10" },
     { name = "strands-agents-tools", specifier = ">=0.5.0" },

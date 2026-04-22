@@ -2,7 +2,8 @@ import logging
 
 from strands import Agent
 from strands.models.ollama import OllamaModel
-from utils import speak
+from strands_tools import calculator, file_read
+from utils import change_language, current_time, speak
 
 # Enables Strands debug log level
 logging.getLogger('strands').setLevel(logging.DEBUG)
@@ -20,7 +21,16 @@ qwen_model = OllamaModel(
 
 
 # inicia o agente
-agent = Agent(model=qwen_model, tools=[])
+agent = Agent(
+    model=qwen_model,
+    tools=[
+        change_language,
+        calculator,
+        file_read,
+        current_time,
+    ],
+)
 
-response = agent('what is your name?')
+response = agent('what tools you have access?')
+print(response)
 speak(str(response))
