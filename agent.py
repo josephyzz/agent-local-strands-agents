@@ -3,7 +3,7 @@ import logging
 from strands import Agent
 from strands.models.ollama import OllamaModel
 from strands_tools import calculator, file_read
-from utils import change_language, current_time, speak
+from utils import change_language_voice, get_user_current_day_time, speak
 
 # Enables Strands debug log level
 logging.getLogger('strands').setLevel(logging.DEBUG)
@@ -24,13 +24,13 @@ qwen_model = OllamaModel(
 agent = Agent(
     model=qwen_model,
     tools=[
-        change_language,
+        change_language_voice,
         calculator,
         file_read,
-        current_time,
+        get_user_current_day_time,
     ],
 )
-
-response = agent('what tools you have access?')
-print(response)
+response = agent(
+    'could you change the language to portuguese and tell me the current date and time?'
+)
 speak(str(response))

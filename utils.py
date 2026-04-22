@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 from settings import settings
 from gtts import gTTS
+from strands import tool
 
 FILENAME = 'voz.mp3'
 
@@ -19,7 +20,8 @@ def speak(text: str):
     os.remove(FILENAME)
 
 
-def change_language(language: str):
+@tool
+def change_language_voice(language: str):
     """
     Change the language for text-to-speech.
     Args:
@@ -29,7 +31,17 @@ def change_language(language: str):
     return f'Language changed to {language}'
 
 
-def current_time():
-    """Return the current time as a string."""
+@tool
+def get_user_current_day_time():
+    """
+    Returns the current date and time.
+
+    Use this tool whenever the user asks for current time or date.
+    """
     now = datetime.now()
-    return now.strftime('%H:%M:%S')
+
+    return {
+        'current_datetime': now.strftime('%d-%m-%Y|%H:%M:%S'),
+        'date': now.strftime('%d-%m-%Y'),
+        'time': now.strftime('%H:%M:%S'),
+    }
